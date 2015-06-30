@@ -110,6 +110,7 @@ public:
         listWidgetHeap->setObjectName(QStringLiteral("listWidgetHeap"));
         listWidgetHeap->setGeometry(QRect(130, 210, 331, 41));
         listWidgetHeap->setFlow(QListView::LeftToRight);
+        listWidgetHeap->setSortingEnabled(true);
         listWidgetQuick = new QListWidget(Sorts);
         listWidgetQuick->setObjectName(QStringLiteral("listWidgetQuick"));
         listWidgetQuick->setGeometry(QRect(130, 260, 331, 41));
@@ -132,6 +133,9 @@ public:
         label->setGeometry(QRect(530, 120, 59, 17));
 
         retranslateUi(Sorts);
+
+        listWidgetHeap->setCurrentRow(-1);
+
 
         QMetaObject::connectSlotsByName(Sorts);
     } // setupUi

@@ -111,7 +111,7 @@ void Sorts::on_pushButtonHeap_clicked()
     tHeap.start();
     heap.Build_MaxHeap(arr_Heap,Cantidad.toInt());
     heap.Function_HeapSort(arr_Heap,Cantidad.toInt());
-    for(int x=0;x<Cantidad.toInt();x++)
+    for(int x=2;x<Cantidad.toInt();x++)
     {
         QString NumText= QString::number(arr_Heap[x]);
         ui->listWidgetHeap->addItem(NumText);
