@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     bubblesort.cpp \
     heapsort.cpp \
     quicksort.cpp \
-    mergesort.cpp
+    mergesort.cpp \
+    graph.cpp \
+    vertex.cpp
 
 HEADERS  += mainproyectwindow.h \
     sorts.h \
@@ -27,7 +29,10 @@ HEADERS  += mainproyectwindow.h \
     bubblesort.h \
     heapsort.h \
     quicksort.h \
-    mergesort.h
+    mergesort.h \
+    vertex.h \
+    graph.h
 
 FORMS    += mainproyectwindow.ui \
-    sorts.ui
+    sorts.ui \
+    graph.ui
