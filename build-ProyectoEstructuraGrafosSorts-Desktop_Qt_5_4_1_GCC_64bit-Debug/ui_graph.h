@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -39,6 +40,7 @@ public:
     QLabel *label_5;
     QLabel *label_6;
     QLineEdit *lineEditPeso;
+    QGraphicsView *graphicsView;
 
     void setupUi(QWidget *Graph)
     {
@@ -90,6 +92,9 @@ public:
         lineEditPeso = new QLineEdit(Graph);
         lineEditPeso->setObjectName(QStringLiteral("lineEditPeso"));
         lineEditPeso->setGeometry(QRect(80, 180, 113, 27));
+        graphicsView = new QGraphicsView(Graph);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setGeometry(QRect(290, 40, 531, 541));
 
         retranslateUi(Graph);
 

@@ -6,6 +6,16 @@ Graph::Graph(QWidget *parent) :
     ui(new Ui::Graph)
 {
     ui->setupUi(this);
+
+    pix = new QPixmap(600,600);
+    scene = new QGraphicsScene();
+    QGraphicsPixmapItem* item(scene->addPixmap(*pix)); // Save the returned item
+    paint = new QPainter(pix);
+    paint->setPen(*(new QColor(255,34,255,255)));
+    paint->drawRect(100,100,50,50);
+   item->setPixmap(*pix);
+   ui->graphicsView->setScene(scene);
+   ui->graphicsView->show();
 }
 
 Graph::~Graph()

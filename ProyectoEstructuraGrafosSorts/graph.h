@@ -7,6 +7,15 @@
 using namespace std;
 #include "vertex.h"
 
+
+
+#include <QGraphicsRectItem>
+#include <QGraphicsScene>
+#include <QPainter>
+#include <vector>
+#include <iostream>
+#include <string>
+
 #include <QWidget>
 
 namespace Ui {
@@ -24,6 +33,11 @@ public:
     void printGraph();
     void Eliminator(string nameNode);
     void Agreganator(string Origen,string Destino,int peso);
+
+    QGraphicsScene *scene;
+    QPixmap *pix;
+    QPainter *paint;
+
 
 private slots:
     void on_pushButtonCrearVertice_clicked();
