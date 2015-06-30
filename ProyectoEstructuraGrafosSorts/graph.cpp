@@ -12,10 +12,28 @@ Graph::Graph(QWidget *parent) :
     QGraphicsPixmapItem* item(scene->addPixmap(*pix)); // Save the returned item
     paint = new QPainter(pix);
     paint->setPen(*(new QColor(255,34,255,255)));
-    paint->drawRect(100,100,50,50);
-   item->setPixmap(*pix);
-   ui->graphicsView->setScene(scene);
-   ui->graphicsView->show();
+
+    /*pixErase = new QPixmap(600,600);
+    paintErase = new QPainter(pix);
+    paintErase->setPen(*(new QColor(255,34,255,255)));*/
+
+
+    item->setPixmap(*pix);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->show();
+
+
+
+
+
+
+
+
+   ordenamiento =false;
+   PositionX=0;
+   PositionY=0;
+   count=0;
+   county=100;
 }
 
 Graph::~Graph()
@@ -26,8 +44,41 @@ Graph::~Graph()
 
 void Graph::insert(string id)
 {
-    vertices.push_back(new Vertex(id));
 
+    if(ordenamiento)
+    {
+        int x=count*100;
+        int y=county;
+        paint->drawRect(x,y,50,50);
+        vertices.push_back(new Vertex(id,x,y));
+        ordenamiento=false;
+        count=count+1;
+        cout<<"Coordenadas rect "<<x<<y<<endl;
+        if(count==5)
+        {
+            county=county+200;
+            count=0;
+        }
+    }
+    else
+    {
+        int x=count*100;
+        int y=county-100;
+        paint->drawRect(x,y,50,50);
+        vertices.push_back(new Vertex(id,count*100,county-100));
+        ordenamiento=true;
+        count=count+1;
+        cout<<"Coordenadas rect "<<x<<y<<endl;
+        if(count==5)
+        {
+            county=county+200;
+            count=0;
+        }
+    }
+    QGraphicsPixmapItem* item(scene->addPixmap(*pix)); // Save the returned item
+    item->setPixmap(*pix);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->show();
 }
 
 void Graph::printGraph()
@@ -69,14 +120,21 @@ void Graph::Agreganator(string Origen,string Destino,int peso)
             {
                 if(vertices[y]->getName()==Destino)
                 {
+                    paint->drawLine(vertices[x]->PosX,vertices[x]->PosY,vertices[y]->PosX,vertices[y]->PosY);
                     cout<<"si tenia el destino"<<endl;
+                    cout<<"coordenadas origen"<<vertices[x]->PosX<<vertices[x]->PosY <<"Coordenadas destino"<<vertices[y]->PosX<<vertices[y]->PosY<<endl;
                     vertices[x]->addEdge(vertices[y],peso);
+
                 }
 
             }
         }
 
     }
+    QGraphicsPixmapItem* item(scene->addPixmap(*pix)); // Save the returned item
+    item->setPixmap(*pix);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->show();
 }
 
 
@@ -104,9 +162,22 @@ void Graph::on_pushButtonEliminarArista_clicked()
     {
         if(vertices[x]->getName()==Ori.toStdString())
         {
+         /* for(int y=0; y<vertices.size();x++)
+            {
+                /*if(vertices[y]->getName()==Des.toStdString())
+                {
+
+                    paintErase->drawLine(vertices[x]->PosX,vertices[x]->PosY,vertices[y]->PosX,vertices[y]->PosY);
+                }
+            }*/
             vertices[x]->EliminateEdge(Des.toStdString());
         }
     }
+    /*QGraphicsPixmapItem* item(scene->addPixmap(*pix)); // Save the returned item
+    item->setPixmap(*pix);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->show();
+    */
 }
 
 

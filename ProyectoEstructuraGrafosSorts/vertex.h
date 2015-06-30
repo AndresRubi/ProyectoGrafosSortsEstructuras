@@ -22,6 +22,7 @@ public:
     Vertex* getOrigin() {return origin;}
     Vertex* getDestination() {return destination;}
     int getDistance() {return distance;}
+
 private:
     Vertex* origin;
     Vertex* destination;
@@ -32,14 +33,14 @@ private:
 class Vertex
 {
 public:
-    Vertex(string id);
+    Vertex(string id,int PosX,int PosY);
 
     void addEdge(Vertex *v, int dist);
     void EliminateEdge(string nodeName);
     void printEdges();
     string getName() {return name;}
     vector<Edge> getEdges() {return edges;}
-
+    int PosX,PosY;
 private:
     string name;
     vector<Edge> edges;

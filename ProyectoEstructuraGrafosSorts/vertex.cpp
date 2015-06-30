@@ -1,7 +1,9 @@
 #include "vertex.h"
-Vertex::Vertex(string id)
+Vertex::Vertex(string id,int PosX,int PosY)
 {
     name = id;
+    this->PosX=PosX;
+    this->PosY=PosY;
 }
 
 void Vertex::addEdge(Vertex *v, int dist)
@@ -14,6 +16,7 @@ void Vertex::EliminateEdge(string nodeName)
 {
     for (int x = 0; x < edges.size(); x++)
     {
+
         if(edges[x].getDestination()->getName()==nodeName)
         {
             edges.erase(edges.begin()+x);
